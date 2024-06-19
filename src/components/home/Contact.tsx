@@ -1,4 +1,6 @@
 import ContactCard from "./ContactCard.tsx";
+import Thomas from "../../assets/img/contact-thomas.webp";
+import Sekar from "../../assets/img/contact-sekar.webp";
 
 export default function Contact() : JSX.Element {
     return (
@@ -7,8 +9,8 @@ export default function Contact() : JSX.Element {
 
             <div className="container">
                 <div className="row justify-content-center text-center">
-                    <ContactCard name={"Thomas"} img={"/src/assets/img/contact-thomas.webp"} phoneNumber={"628123456789"}/>
-                    <ContactCard name={"Sekar"} img={"/src/assets/img/contact-sekar.webp"} phoneNumber={"628164829372"}/>
+                    <ContactCard name={"Thomas"} img={Thomas} phoneNumber={"628123456789"}/>
+                    <ContactCard name={"Sekar"} img={Sekar} phoneNumber={"628164829372"}/>
                 </div>
             </div>
         </section>

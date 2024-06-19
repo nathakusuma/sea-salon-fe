@@ -1,8 +1,9 @@
-import './hero.css';
+import "./hero.css";
+import BackgroundImage from "../../assets/img/hero.webp";
 
 export default function Hero() : JSX.Element {
     return (
-        <section id="home" className="hero px-3 overlay" style={{backgroundImage: "url('/src/assets/img/hero.webp')"}}>
+        <section id="home" className="hero px-3 overlay" style={{backgroundImage: `url(${BackgroundImage})`}}>
             <div className="container">
                 <div className="row justify-content-md-center">
                     <div className="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-center text-white">

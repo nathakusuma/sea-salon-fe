@@ -1,3 +1,5 @@
+import Whatsapp from "../../assets/img/WhatsAppButtonGreenSmall.svg";
+
 export default function ContactCard(props: { name: string, img: string, phoneNumber: string }) : JSX.Element {
     return (
         <article className="col-xl-3 col-sm-6 mb-5">
@@ -6,7 +8,7 @@ export default function ContactCard(props: { name: string, img: string, phoneNum
                 <h5 className="mb-0">{props.name}</h5>
                 <div className="small text-uppercase text-muted mb-2">{props.phoneNumber}</div>
                 <a aria-label="Chat on WhatsApp" target="_blank" href={encodeURI(`https://wa.me/${props.phoneNumber}?text="Hello, ${props.name}! I want to ask something about SEA Salon."`)}>
-                    <img alt="Chat on WhatsApp" src="/src/assets/img/WhatsAppButtonGreenSmall.svg"/>
+                    <img alt="Chat on WhatsApp" src={Whatsapp}/>
                 </a>
             </div>
         </article>

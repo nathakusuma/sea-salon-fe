@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import Logo from "../../assets/img/logo.png";
 
 const Navbar: React.FC = () => {
     const [activeSection, setActiveSection] = useState<string>('home');
@@ -36,7 +37,7 @@ const Navbar: React.FC = () => {
         <nav className="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
             <div className="container">
                 <a className="navbar-brand d-flex" href="#">
-                    <img src="/src/assets/img/logo.png" alt="logo" width={"40px"} />
+                    <img src={Logo} alt="logo" width={"40px"} />
                     <div className="h3 ms-2 mb-0 align-self-center"><strong>SEA SALON</strong></div>
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"

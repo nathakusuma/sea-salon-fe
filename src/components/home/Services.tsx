@@ -1,4 +1,7 @@
 import ServiceCard from "./ServiceCard.tsx";
+import HaircutsAndStyling from "../../assets/img/haircuts-and-styling.webp";
+import ManicureAndPedicure from "../../assets/img/manicure-and-pedicure.webp";
+import FacialTreatments from "../../assets/img/facial-treatments.webp";
 
 export default function Services() : JSX.Element {
     return (
@@ -8,13 +11,13 @@ export default function Services() : JSX.Element {
             </div>
             <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                 <div className="col h-100 d-flex justify-content-center">
-                    <ServiceCard href={"#"} title={"Haircuts and Styling"} img={"/src/assets/img/haircuts-and-styling.webp"}/>
+                    <ServiceCard href={"#"} title={"Haircuts and Styling"} img={HaircutsAndStyling}/>
                 </div>
                 <div className="col h-100 d-flex justify-content-center">
-                    <ServiceCard href={"#"} title={"Manicure and Pedicure"} img={"/src/assets/img/manicure-and-pedicure.webp"}/>
+                    <ServiceCard href={"#"} title={"Manicure and Pedicure"} img={ManicureAndPedicure}/>
                 </div>
                 <div className="col h-100 d-flex justify-content-center">
-                    <ServiceCard href={"#"} title={"Facial Treatments"} img={"/src/assets/img/facial-treatments.webp"} />
+                    <ServiceCard href={"#"} title={"Facial Treatments"} img={FacialTreatments} />
                 </div>
             </div>
         </section>
