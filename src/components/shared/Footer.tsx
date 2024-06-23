@@ -1,6 +1,6 @@
 export default function Footer(): JSX.Element {
     return (
-        <footer className="text-center text-white bg-primary">
+        <footer className="text-center text-white bg-primary mt-5">
             <div className="container p-4 pb-0">
                 <section className="">
                     <p className="d-flex justify-content-center align-items-center">
