@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
             <div className="container">
-                <a className="navbar-brand d-flex" href="#">
+                <a className="navbar-brand d-flex" href="/#">
                     <img src={Logo} alt="logo" width={"40px"} />
                     <div className="h3 ms-2 mb-0 align-self-center"><strong>SEA SALON</strong></div>
                 </a>
@@ -48,22 +48,22 @@ const Navbar: React.FC = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} aria-current="page" href="#home">Home</a>
+                            <a className={`nav-link ${activeSection === 'home' ? 'active' : ''}`} aria-current="page" href="/#home">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'services' ? 'active' : ''}`} href="#services">Services</a>
+                            <a className={`nav-link ${activeSection === 'services' ? 'active' : ''}`} href="/#services">Services</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'branches' ? 'active' : ''}`} href="#branches">Branches</a>
+                            <a className={`nav-link ${activeSection === 'branches' ? 'active' : ''}`} href="/#branches">Branches</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'reviews' ? 'active' : ''}`} href="#reviews">Reviews</a>
+                            <a className={`nav-link ${activeSection === 'reviews' ? 'active' : ''}`} href="/reviews">Reviews</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'reservation' ? 'active' : ''}`} href="#reservation">Reservation</a>
+                            <a className={`nav-link ${activeSection === 'reservation' ? 'active' : ''}`} href="/#reservation">Reservation</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} href="#contact">Contact</a>
+                            <a className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} href="/#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
