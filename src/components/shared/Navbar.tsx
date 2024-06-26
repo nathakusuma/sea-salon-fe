@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
                             <a className={`nav-link ${activeSection === 'reviews' ? 'active' : ''}`} href="/reviews">Reviews</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'reservation' ? 'active' : ''}`} href="/#reservation">Reservation</a>
+                            <a className={`nav-link ${activeSection === 'reservation' ? 'active' : ''}`} href="/reservation">Reservation</a>
                         </li>
                         <li className="nav-item">
                             <a className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} href="/#contact">Contact</a>

@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import HomePage from "./pages/HomePage.tsx";
 import ReviewPage from "./pages/ReviewPage.tsx";
+import ReservationPage from "./pages/ReservationPage.tsx";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />}/>
                 <Route path="/reviews" element={<ReviewPage />}/>
+                <Route path="/reservation" element={<ReservationPage />} />
             </Routes>
         </Router>
     )
