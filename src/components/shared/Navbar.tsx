@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/img/logo.png";
+import {useAuth} from "../../hooks/useAuth.ts";
 
 const Navbar: React.FC = () => {
     const [activeSection, setActiveSection] = useState<string>('home');
@@ -33,6 +34,8 @@ const Navbar: React.FC = () => {
         };
     }, []);
 
+    const isAuthenticated = useAuth();
+
     return (
         <nav className="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
             <div className="container">
@@ -60,11 +63,24 @@ const Navbar: React.FC = () => {
                             <a className={`nav-link ${activeSection === 'reviews' ? 'active' : ''}`} href="/reviews">Reviews</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${activeSection === 'reservation' ? 'active' : ''}`} href="/reservation">Reservation</a>
-                        </li>
-                        <li className="nav-item">
                             <a className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} href="/#contact">Contact</a>
                         </li>
+                        {isAuthenticated ? (
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="/dashboard">Dashboard</a></li>
+                                    <li><hr className="dropdown-divider"></hr></li>
+                                    <li className="dropdown-item">
+                                        <a href="/logout"><button className="btn btn-outline-danger btn-sm px-3">Log out</button></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        ) : (
+                            <li className="nav-item d-flex align-items-center ms-1">
+                                <button className="btn btn-outline-light btn-sm" onClick={() => window.location.href = "/login"}>Log in</button>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>
