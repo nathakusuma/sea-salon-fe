@@ -7,8 +7,6 @@ import {
 import { getAvailableSchedules, createReservation } from '../../api/services/reservation.ts';
 
 export default function ReservationForm() : JSX.Element {
-    const [customerName, setCustomerName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [serviceName, setServiceName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -37,9 +35,7 @@ export default function ReservationForm() : JSX.Element {
         event.preventDefault();
 
         const request: CreateReservationRequest = {
-            customerName,
-            phoneNumber,
-            serviceName,
+            serviceName: serviceName,
             startTime: time,
             date: date,
         };
@@ -48,8 +44,6 @@ export default function ReservationForm() : JSX.Element {
             window.alert("Reservation created successfully!");
 
             // Reset form fields
-            setCustomerName('');
-            setPhoneNumber('');
             setServiceName('');
             setDate('');
             setTime('');
@@ -62,15 +56,7 @@ export default function ReservationForm() : JSX.Element {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="container">
-            <div className="mb-3">
-                <label className="form-label">Customer Name</label>
-                <input type="text" className="form-control" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Phone Number</label>
-                <input type="text" className="form-control" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-            </div>
+        <form onSubmit={handleSubmit} className="mb-5 mt-3">
             <div className="mb-3">
                 <label className="form-label">Service</label>
                 <select className="form-select" value={serviceName} onChange={(e) => setServiceName(e.target.value)}>
@@ -97,7 +83,7 @@ export default function ReservationForm() : JSX.Element {
                 {(!date || !serviceName) &&
                     <small className="form-text text-muted">Please fill in the date and service first.</small>}
             </div>
-            <button type="submit" className="btn btn-primary text-white">Submit</button>
+            <button type="submit" className="btn btn-primary text-white">Reserve</button>
         </form>
     );
 }

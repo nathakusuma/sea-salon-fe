@@ -1,6 +1,4 @@
 export interface CreateReservationRequest {
-    customerName: string,
-    phoneNumber: string,
     serviceName: string,
     startTime: string,
     date: string,
@@ -12,6 +10,14 @@ export interface GetAvailableSchedulesRequest {
 }
 
 export interface GetAvailableScheduleResponse {
+    startTime: string,
+    finishTime: string,
+}
+
+export interface GetReservationResponse {
+    id: string,
+    date: string,
+    serviceName: string,
     startTime: string,
     finishTime: string,
 }
