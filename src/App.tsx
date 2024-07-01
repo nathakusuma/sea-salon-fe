@@ -15,8 +15,8 @@ import Home from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ReviewPage from "./pages/ReviewPage";
-import CustomerDashboardPage from "./pages/CustomerDashboardPage";
 import Logout from "./components/auth/Logout";
+import DashboardRoute from "./components/routes/DashboardRoute.tsx";
 
 function App() : JSX.Element {
     return (
@@ -30,7 +30,7 @@ function App() : JSX.Element {
                     <Route path="/register" element={<RegisterPage />} />
                 </Route>
                 <Route element={<ProtectedRoute />}>
-                    <Route path="/dashboard" element={<CustomerDashboardPage />} />
+                    <Route path="/dashboard" element={<DashboardRoute />} />
                 </Route>
             </Routes>
         </Router>
