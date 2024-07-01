@@ -1,5 +1,6 @@
 import Layout from "../components/layout/MainLayout.tsx";
 import ServiceCreateModal from "../components/admin/ServiceCreateModal.tsx";
+import ReservationTableAdmin from "../components/admin/ReservationTableAdmin.tsx";
 
 export default function AdminDashboardPage(): JSX.Element {
     return (
@@ -9,6 +10,7 @@ export default function AdminDashboardPage(): JSX.Element {
                 <div className="my-4 d-flex justify-content-center">
                     <ServiceCreateModal/>
                 </div>
+                <ReservationTableAdmin />
             </div>
         </Layout>
     );

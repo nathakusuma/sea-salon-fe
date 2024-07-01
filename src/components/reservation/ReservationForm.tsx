@@ -5,37 +5,58 @@ import {
     GetAvailableSchedulesRequest
 } from '../../types/reservation.ts';
 import { getAvailableSchedules, createReservation } from '../../api/services/reservation.ts';
+import {getAllServices} from "../../api/services/service.ts";
+import {Service} from "../../types/service.ts";
 
 export default function ReservationForm() : JSX.Element {
-    const [serviceName, setServiceName] = useState('');
+    const [availableServices, setAvailableServices] = useState<Service[]>([]);
+
+    const [serviceId, setServiceId] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [availableSchedules, setAvailableSchedules] = useState<GetAvailableScheduleResponse[]>([]);
 
     const fetchAvailableSchedules = async () => {
         const request: GetAvailableSchedulesRequest = {
-            serviceName,
-            date,
+            serviceId: serviceId,
+            date : date,
         };
         try {
             const response = await getAvailableSchedules(request);
             setAvailableSchedules(response.data.payload);
         } catch (error) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            window.alert(error.response.data.message);
             console.error(error);
         }
     }
 
+    const fetchAvailableServices = async () => {
+        try {
+            const response = await getAllServices();
+            setAvailableServices(response.data.payload);
+        } catch (error) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            window.alert(error.response.data.message);
+            console.error(error);
+        }
+
+    }
+
     useEffect(() => {
-        if (serviceName && date) {
+        fetchAvailableServices();
+        if (serviceId && date) {
             fetchAvailableSchedules();
         }
-    }, [serviceName, date]);
+    }, [serviceId, date]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         const request: CreateReservationRequest = {
-            serviceName: serviceName,
+            serviceId: serviceId,
             startTime: time,
             date: date,
         };
@@ -44,7 +65,7 @@ export default function ReservationForm() : JSX.Element {
             window.alert("Reservation created successfully!");
 
             // Reset form fields
-            setServiceName('');
+            setServiceId('');
             setDate('');
             setTime('');
             setAvailableSchedules([]);
@@ -59,28 +80,28 @@ export default function ReservationForm() : JSX.Element {
         <form onSubmit={handleSubmit} className="mb-5 mt-3">
             <div className="mb-3">
                 <label className="form-label">Service</label>
-                <select className="form-select" value={serviceName} onChange={(e) => setServiceName(e.target.value)}>
+                <select required className="form-select" value={serviceId} onChange={(e) => setServiceId(e.target.value)}>
                     <option value="">Select a service</option>
-                    <option value="Haircuts and Styling">Haircuts and Styling</option>
-                    <option value="Manicure and Pedicure">Manicure and Pedicure</option>
-                    <option value="Facial Treatments">Facial Treatments</option>
+                    {availableServices.map((service, index) => (
+                        <option key={index} value={service.id}>{service.name}</option>
+                    ))}
                 </select>
             </div>
             <div className="mb-3">
                 <label className="form-label">Date</label>
-                <input type="date" className="form-control" value={date} onChange={(e) => setDate(e.target.value)} />
+                <input required type="date" className="form-control" value={date} onChange={(e) => setDate(e.target.value)} />
             </div>
             <div className="mb-3">
                 <label className="form-label">Start Time</label>
-                <select className="form-select" value={time} onChange={(e) => setTime(e.target.value)}
-                        disabled={!date || !serviceName}>
+                <select required className="form-select" value={time} onChange={(e) => setTime(e.target.value)}
+                        disabled={!date || !serviceId}>
                     <option value="">Select a time</option>
                     {availableSchedules.map((schedule, index) => (
                         <option key={index}
                                 value={schedule.startTime}>{schedule.startTime + " - " + schedule.finishTime}</option>
                     ))}
                 </select>
-                {(!date || !serviceName) &&
+                {(!date || !serviceId) &&
                     <small className="form-text text-muted">Please fill in the date and service first.</small>}
             </div>
             <button type="submit" className="btn btn-primary text-white">Reserve</button>

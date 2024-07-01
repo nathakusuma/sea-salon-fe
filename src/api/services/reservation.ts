@@ -23,7 +23,7 @@ const getAvailableSchedules = async (queryParameters : GetAvailableSchedulesRequ
     });
 };
 
-const getCustomerReservations = async () : Promise<AxiosResponse> => {
+const getReservationsCustomer = async () : Promise<AxiosResponse> => {
     const token = window.localStorage.getItem("token");
 
     return await axiosInstance.get("/reservations/my", {
@@ -33,4 +33,17 @@ const getCustomerReservations = async () : Promise<AxiosResponse> => {
     });
 }
 
-export { createReservation, getAvailableSchedules, getCustomerReservations };
+const getReservationsAdmin = async (date: string) : Promise<AxiosResponse> => {
+    const token = window.localStorage.getItem("token");
+
+    return await axiosInstance.get("/reservations/admin", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        params: {
+            date: date
+        }
+    });
+}
+
+export { createReservation, getAvailableSchedules, getReservationsCustomer, getReservationsAdmin};

@@ -1,6 +1,6 @@
 import {GetReservationResponse} from "../../types/reservation.ts";
 import {useEffect, useState} from "react";
-import {getCustomerReservations} from "../../api/services/reservation.ts";
+import {getReservationsCustomer} from "../../api/services/reservation.ts";
 import ReservationTableRow from "./ReservationTableRow.tsx";
 
 export default function ReservationTable() : JSX.Element {
@@ -8,7 +8,8 @@ export default function ReservationTable() : JSX.Element {
 
     const getPastReservations = async () => {
         try {
-            const response = await getCustomerReservations();
+            const response = await getReservationsCustomer();
+            console.log(response.data.payload)
             setReservations(response.data.payload);
         } catch (error) {
             console.error(error);
@@ -32,7 +33,7 @@ export default function ReservationTable() : JSX.Element {
             <tbody>
             {reservations.length > 0 ? (
                 reservations.map((reservation : GetReservationResponse) => (
-                    <ReservationTableRow reservation={reservation} />
+                    <ReservationTableRow key={reservation.id} reservation={reservation} />
                 ))
             ) : (
                 <tr>
