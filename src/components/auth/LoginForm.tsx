@@ -26,7 +26,8 @@ export default function LoginForm(): JSX.Element {
             const payload : LoginResponse = response.data.payload;
             window.localStorage.setItem("token", payload.token);
             window.localStorage.setItem("fullName", payload.fullName);
-            navigate("/");
+            window.localStorage.setItem("isAdmin", payload.isAdmin.toString());
+            navigate("/dashboard");
         } catch (error) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
