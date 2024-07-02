@@ -23,7 +23,6 @@ function App() : JSX.Element {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/reviews" element={<ReviewPage />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route element={<AuthRoute />}>
                     <Route path="/login" element={<LoginPage />} />
@@ -31,6 +30,7 @@ function App() : JSX.Element {
                 </Route>
                 <Route element={<ProtectedRoute />}>
                     <Route path="/dashboard" element={<DashboardRoute />} />
+                    <Route path="/reviews" element={<ReviewPage />} />
                 </Route>
             </Routes>
         </Router>

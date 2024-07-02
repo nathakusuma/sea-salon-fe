@@ -28,17 +28,17 @@ export default function TopReviews(): JSX.Element {
         <section id="reviews" className="container p-5">
             <h2 className="h1 text-info p-5 text-center">Top Reviews</h2>
 
-            <div className="row row-cols-1 row-cols-md-4 g-4 align-content-center justify-content-center">
-                {reviews.length > 0 ? (
-                    reviews.map((review : Review) => (
-                        <div key={review.id} className="col h-100 d-flex justify-content-center">
-                            <TopReviewCard review={review} />
-                        </div>
-                    ))
-                ) : (
-                    <p>No reviews yet</p>
-                )}
-            </div>
+            {reviews.length > 0 ? (
+                <div className="row row-cols-1 row-cols-md-4 g-4 align-content-center justify-content-center">
+                    {reviews.map((review : Review) => (
+                    <div key={review.id} className="col h-100 d-flex justify-content-center">
+                        <TopReviewCard review={review}/>
+                    </div>
+                    ))}
+                </div>
+            ) : (
+                <p className="d-flex justify-content-center">No reviews yet</p>
+            )}
             <div className="d-flex justify-content-center">
                 <a href="/reviews">
                     <button type="button" className="btn btn-primary text-white mt-5">

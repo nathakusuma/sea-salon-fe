@@ -5,7 +5,7 @@ import ReviewElement from "./ReviewElement.tsx";
 
 const MAX_FETCH = 10;
 
-export default function ReviewList() : JSX.Element {
+export default function ReviewList(): JSX.Element {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [isNextDisabled, setIsNextDisabled] = useState<boolean>(false);
     const [isPrevDisabled, setIsPrevDisabled] = useState<boolean>(true);
@@ -23,12 +23,10 @@ export default function ReviewList() : JSX.Element {
                 if (action === "next") {
                     setIsNextDisabled(true);
                     setIsPrevDisabled(false);
-                }
-                else if (action === "prev") {
+                } else if (action === "prev") {
                     setIsPrevDisabled(true);
                     setIsNextDisabled(false);
-                }
-                else {
+                } else {
                     setIsNextDisabled(true);
                     setIsPrevDisabled(true);
                 }
@@ -40,17 +38,14 @@ export default function ReviewList() : JSX.Element {
                 if (action === "next") {
                     setIsNextDisabled(true);
                     setIsPrevDisabled(false);
-                }
-                else if (action === "prev") {
+                } else if (action === "prev") {
                     setIsPrevDisabled(true);
                     setIsNextDisabled(false);
-                }
-                else {
+                } else {
                     setIsNextDisabled(true);
                     setIsPrevDisabled(true);
                 }
-            }
-            else setReviews(response.data.payload);
+            } else setReviews(response.data.payload);
         } catch (error) {
             console.error(error);
         }
@@ -62,22 +57,25 @@ export default function ReviewList() : JSX.Element {
 
     return (
         <section id="reviews" className="container pt-5">
-            <div className="row row-cols-1 row-cols-md-1 g-4 align-content-center">
-                {reviews.length > 0 ? (
-                    reviews.map((review : Review) => (
-                        <div key={review.id} className="col d-flex justify-content-center">
-                            <ReviewElement review={review}/>
-                        </div>
-                    ))
-                ) : (
-                    <p>No reviews yet</p>
-                )}
-            </div>
+            {reviews.length > 0 ? (
+                <div className="row row-cols-1 row-cols-md-1 g-4 align-content-center">
+                    {reviews.map((review : Review) => (
+                    <div key={review.id} className="col d-flex justify-content-center">
+                        <ReviewElement review={review}/>
+                    </div>
+                    ))}
+                </div>
+            ) : (
+                <p className="d-flex justify-content-center">No reviews yet</p>
+            )}
             <div className="d-flex justify-content-center">
-                <button type="button" className={`btn btn-primary text-white mt-5 me-4${isPrevDisabled ? " disabled" : ""}`} onClick={() => getReviews("prev", reviews[0].id)}>
+                <button type="button"
+                        className={`btn btn-primary text-white mt-5 me-4${isPrevDisabled ? " disabled" : ""}`}
+                        onClick={() => getReviews("prev", reviews[0].id)}>
                     Prev
                 </button>
-                <button type="button" className={`btn btn-primary text-white mt-5${isNextDisabled ? " disabled" : ""}`} onClick={() => getReviews("next", reviews[reviews.length - 1].id)}>
+                <button type="button" className={`btn btn-primary text-white mt-5${isNextDisabled ? " disabled" : ""}`}
+                        onClick={() => getReviews("next", reviews[reviews.length - 1].id)}>
                     Next
                 </button>
             </div>

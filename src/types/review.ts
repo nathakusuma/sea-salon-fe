@@ -13,7 +13,6 @@ export interface GetReviewsRequest {
 }
 
 export interface CreateReviewRequest {
-    customerName: string,
     starRating: number,
     comment: string,
 }
