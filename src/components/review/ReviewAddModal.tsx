@@ -12,11 +12,11 @@ export default function ReviewAddModal() : JSX.Element {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await createReview({
+            await createReview({
                 starRating: starRating,
                 comment: comment
             });
-            window.alert(response.data.message)
+            window.location.reload()
             setStarRating(0);
             setComment("");
         } catch (error) {
