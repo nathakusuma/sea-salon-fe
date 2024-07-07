@@ -25,9 +25,9 @@ export default function ReservationTable() : JSX.Element {
             <thead>
             <tr>
                 <th>Date</th>
-                <th>Service Name</th>
-                <th>Start Time</th>
-                <th>Finish Time</th>
+                <th>Branch</th>
+                <th>Service</th>
+                <th>Time</th>
             </tr>
             </thead>
             <tbody>

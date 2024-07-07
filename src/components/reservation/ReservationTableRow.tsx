@@ -4,9 +4,9 @@ export default function ReservationTableRow(props: { reservation: GetReservation
     return (
         <tr id={props.reservation.id}>
             <td>{props.reservation.date}</td>
+            <td>{props.reservation.branchName}</td>
             <td>{props.reservation.serviceName}</td>
-            <td>{props.reservation.startTime}</td>
-            <td>{props.reservation.finishTime}</td>
+            <td>{props.reservation.time}</td>
         </tr>
     )
 }

@@ -1,5 +1,9 @@
 import {axiosInstance} from "../coreApi.ts";
-import {CreateReservationRequest, GetAvailableSchedulesRequest} from "../../types/reservation.ts";
+import {
+    AdminGetReservationsRequest,
+    CreateReservationRequest,
+    GetAvailableSchedulesRequest
+} from "../../types/reservation.ts";
 import {AxiosResponse} from "axios";
 
 const createReservation = async (reservation : CreateReservationRequest) : Promise<AxiosResponse> => {
@@ -33,16 +37,14 @@ const getReservationsCustomer = async () : Promise<AxiosResponse> => {
     });
 }
 
-const getReservationsAdmin = async (date: string) : Promise<AxiosResponse> => {
+const getReservationsAdmin = async (queryParameters: AdminGetReservationsRequest) : Promise<AxiosResponse> => {
     const token = window.localStorage.getItem("token");
 
     return await axiosInstance.get("/reservations/admin", {
         headers: {
             Authorization: `Bearer ${token}`
         },
-        params: {
-            date: date
-        }
+        params: queryParameters
     });
 }
 
