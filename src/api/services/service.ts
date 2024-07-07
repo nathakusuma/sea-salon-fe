@@ -16,7 +16,13 @@ const createService = async (service : CreateServiceRequest) : Promise<AxiosResp
         durationMinute: Number(service.durationMinute),
     }));
 
-    return await axiosInstance.post("/services", formData);
+    const token = window.localStorage.getItem("token");
+
+    return await axiosInstance.post("/services", formData, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
 }
 
 export { getAllServices, createService };
