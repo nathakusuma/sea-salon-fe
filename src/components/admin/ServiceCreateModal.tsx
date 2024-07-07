@@ -114,7 +114,7 @@ export default function ServiceCreateModal(): JSX.Element {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" id="serviceModalClose"
+                            <button type="button" className="btn btn-danger" id="serviceModalClose"
                                     data-bs-dismiss="modal">Close
                             </button>
                         </div>
