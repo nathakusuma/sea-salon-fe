@@ -5,7 +5,7 @@ export default function Footer(): JSX.Element {
                 <section className="">
                     <p className="d-flex justify-content-center align-items-center">
                         <span className="me-3">Redefine your style!</span>
-                        <a href="/reservation">
+                        <a href="/dashboard">
                             <button type="button" className="btn btn-outline-light btn-rounded">
                                 Make Reservation
                             </button>

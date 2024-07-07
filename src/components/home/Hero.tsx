@@ -13,7 +13,7 @@ export default function Hero() : JSX.Element {
                             <a href="#services">
                                 <button type="button" className="btn btn-primary btn-lg text-white">Get Started</button>
                             </a>
-                            <a href="#contact">
+                            <a href="/dashboard">
                                 <button type="button" className="btn btn-outline-light btn-lg">Make Reservation</button>
                             </a>
                         </div>
